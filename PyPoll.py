@@ -11,36 +11,28 @@
 # Get the total votes cast for the election.
 
 # Import the datetime class from the datetime module.
-import datetime
-import random
-import numpy
 import os
 import csv
-# Use the now() attribute on the datetime class to get the present time.
-#now = datetime.datetime.now()
-# Print the present time.
-#print("The time right now is ", now)
 
 # Assign a variable for the file to load and the path.
-#file_to_load = "Module3\course\Resources\election_results.csv"
-file_to_load = os.path.join("Module3", "course", "Resources", "election_results.csv")
+file_to_load = os.path.join("Resources", "election_results.csv")
+# Create a filename variable to a direct or indirect path to the file.
+file_to_save = os.path.join("analysis", "election_analysis.txt")
 
-# Open the election results and read the file.
-# Open the election results and read the file.
+# 1. Initialize a total vote counter.
+total_votes = 0
+
+# Open the election results and read the file
 with open(file_to_load) as election_data:
     file_reader = csv.reader(election_data)
 
-    # Read and print the header row.
+    # Read the header row.
     headers = next(file_reader)
-    print(headers)
-     
-# Create a filename variable to a direct or indirect path to the file.
-file_to_save = os.path.join("Module3", "course", "analysis", "election_analysis.txt")
 
-# Using the with statement open the file as a text file.
-with open(file_to_save, "w") as txt_file:
+    # Print each row in the CSV file.
+    for row in file_reader:
+        # 2. Add to the total vote count.
+        total_votes += 1
 
-    # Write three counties to the file.
-    #txt_file.write("Arapahoe, Denver, Jefferson")   
-    # Write three counties to the file.
-     txt_file.write("Arapahoe\nDenver\nJefferson")
+# 3. Print the total votes.
+print(total_votes)
