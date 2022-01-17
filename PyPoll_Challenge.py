@@ -8,7 +8,7 @@ import os
 # Add a variable to load a file from a path.
 file_to_load = os.path.join("Resources", "election_results.csv")
 # Add a variable to save the file to a path.
-file_to_save = os.path.join("analysis", "election_analysis.txt")
+file_to_save = os.path.join("analysis", "election_results.txt")
 
 # Initialize a total vote counter.
 total_votes = 0
@@ -103,7 +103,7 @@ with open(file_to_save, "w") as txt_file:
         print(county_results)       
 
          # 6e: Save the county votes to a text file.
-         # This step will be completed in Deliverable 2.
+        txt_file.write(county_results)
 
          # 6f: Write an if statement to determine the winning county and get its vote count.
         if (votes_per_county > winning_county_count):
@@ -111,11 +111,13 @@ with open(file_to_save, "w") as txt_file:
             winning_county = county_v 
 
     # 7: Print the county with the largest turnout to the terminal.
-    print("--------------------------------------")             
-    print (f'Largest County Turnout: {winning_county}') 
-    print("--------------------------------------\n") 
+    turnout_results = (f'--------------------------------------\n'
+                       f'Largest County Turnout: {winning_county}\n'
+                       f'--------------------------------------\n') 
+    print (turnout_results)
 
     # 8: Save the county with the largest turnout to a text file.
+    txt_file.write(turnout_results)
 
 
     for candidate_name in candidate_votes:
